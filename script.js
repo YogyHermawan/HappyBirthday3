@@ -1,43 +1,27 @@
-const openGiftBtn = document.getElementById("openGift");
-const popup = document.getElementById("popup");
-const closePopup = document.getElementById("closePopup");
+const openBtn = document.getElementById('openGift');
+const closeBtn = document.getElementById('closePopup');
+const popup = document.getElementById('popup');
+const typingText = document.getElementById('typingText');
 
-openGiftBtn.addEventListener("click", () => {
-  popup.style.display = "flex";
-  startConfetti();
+const message = `Aku mungkin nggak selalu bisa bilang langsung…\n\nTapi aku ingin kamu tahu, dari semua hal yang terjadi dalam hidupku—kenal kamu adalah salah satu yang terbaik.\n\nKamu selalu tahu caranya membuat orang lain tersenyum, bahkan saat kamu sendiri sedang lelah.\n\nDan aku… semakin hari, makin merasa kagum.\n\nSemoga di tahun ini, kamu bisa lebih sering bahagia, dan lebih jarang merasa sendiri.\n\nKalau boleh… aku ingin jadi bagian kecil dari kebahagiaan itu.`;
+
+let i = 0;
+
+openBtn.addEventListener('click', () => {
+  popup.style.display = 'flex';
+  typingText.innerHTML = '';
+  i = 0;
+  typeWriter();
 });
 
-closePopup.addEventListener("click", () => {
-  popup.style.display = "none";
+closeBtn.addEventListener('click', () => {
+  popup.style.display = 'none';
 });
 
-window.addEventListener("click", (e) => {
-  if (e.target === popup) {
-    popup.style.display = "none";
+function typeWriter() {
+  if (i < message.length) {
+    typingText.innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 35); // Ketik huruf per huruf
   }
-});
-
-// Confetti effect
-function startConfetti() {
-  const container = document.createElement('div');
-  container.id = "confetti-container";
-  document.body.appendChild(container);
-
-  for (let i = 0; i < 100; i++) {
-    const confetti = document.createElement("div");
-    confetti.className = "confetti";
-    confetti.style.left = Math.random() * 100 + "vw";
-    confetti.style.animationDelay = Math.random() * 2 + "s";
-    confetti.style.backgroundColor = getRandomColor();
-    container.appendChild(confetti);
-  }
-
-  setTimeout(() => {
-    container.remove();
-  }, 5000);
-}
-
-function getRandomColor() {
-  const colors = ["#ff6f61", "#ffd700", "#90ee90", "#add8e6", "#ff69b4"];
-  return colors[Math.floor(Math.random() * colors.length)];
 }
