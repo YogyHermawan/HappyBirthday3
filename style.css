@@ -89,4 +89,7 @@ img {
   }
 iframe {
   border-radius: 10px;
+  height: 20px;
+  width: 40px;
 }
+
