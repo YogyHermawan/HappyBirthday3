@@ -81,3 +81,8 @@ button:hover {
   text-align: left;
   white-space: pre-line;
 }
+img {
+    width: 100px;
+    height: 60px;
+    object-fit: cover;
+  }
