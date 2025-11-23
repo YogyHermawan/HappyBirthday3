@@ -85,4 +85,8 @@ img {
     width: 100px;
     height: 60px;
     object-fit: cover;
+
   }
+iframe {
+  border-radius: 10px;
+}
